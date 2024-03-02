@@ -16,17 +16,14 @@ public class ClienteThread extends Thread {
             BufferedReader consoleInput = new BufferedReader(new InputStreamReader(System.in));
 
             String mensajeDelServidor;
-            int numThereads = 8;
-            for (int i = 0; i < numThereads; i++) {
-                while ((mensajeDelServidor = in.readLine()) != null) {
-                    System.out.println("Servidor: " + mensajeDelServidor);
+            while ((mensajeDelServidor = in.readLine()) != null) {
+                System.out.println("Servidor: " + mensajeDelServidor);
 
-                    // Simulamos la compra de una camisa cuando el servidor solicita una acción al cliente
-                    if (mensajeDelServidor.equals("¿Desea comprar una camisa? (S/N):")) {
-                        System.out.print("Cliente: ");
-                        String respuesta = consoleInput.readLine().toUpperCase();
-                        out.println(respuesta);
-                    }
+                // Simulamos la compra de una camisa cuando el servidor solicita una acción al cliente
+                if (mensajeDelServidor.equals("¿Desea comprar una camisa? (S/N):")) {
+                    System.out.print("Cliente: ");
+                    String respuesta = consoleInput.readLine().toUpperCase();
+                    out.println(respuesta);
                 }
             }
             socket.close();
